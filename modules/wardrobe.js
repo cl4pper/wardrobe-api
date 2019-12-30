@@ -15,8 +15,18 @@ router.get('/', async (req, res) => {
 })
 
 // CREATING ONE
-router.post('/', (req, res) => {
-    res.send('Creating One')
+router.post('/', async (req, res) => {
+    const item = new Item({
+        name: req.body.name,
+        type: req.body.type,
+        store: true
+    })
+    try {
+        const newItem = await item.save()
+        res.status(201).json(newItem)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 })
 
 // DELETING ONE

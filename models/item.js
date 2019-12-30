@@ -9,10 +9,9 @@ const itemSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lastUpdate: {
+    lastUpdateAt: {
         type: Date,
-        default: Date.now,
-        required: true,
+        default: Date.now
     },
     store: {
         type: Boolean,
