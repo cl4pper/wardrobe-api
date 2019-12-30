@@ -13,4 +13,12 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/5e0969f9941e2d56a2120bed
+DELETE http://localhost:3000/5e099108a87fd7c666a56ba4
+
+###
+PATCH http://localhost:3000/5e0a444ff240783ea62c0273
+Content-Type: application/json
+
+{
+    "name": "Adidas Stripes"
+}

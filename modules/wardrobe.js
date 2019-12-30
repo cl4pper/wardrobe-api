@@ -21,7 +21,7 @@ router.get('/:id', getOneItem, (req, res) => {
 
 // CREATING ONE
 router.post('/', async (req, res) => {
-    const item = new Item({
+    const item = new Item ({
         name: req.body.name,
         type: req.body.type,
         store: true
@@ -41,6 +41,25 @@ router.delete('/:id', getOneItem, async (req, res) => {
         res.json({ message: `${res.item.name} DELETED`})
     } catch (err) {
         res.status(500).json({ message: err.message })
+    }
+})
+
+// UPDATING ONE
+router.patch('/:id', getOneItem, async (req, res) => {
+    if (req.body) {
+        const item = new Item ({
+            ...res.item.toObject(),
+            ...req.body
+        })
+
+        await res.item.remove() // delete past item before send new item
+
+        try {
+            await item.save()
+            res.status(201).json(item)
+        } catch (err) {
+            res.status(400).json({ message: err.message })
+        }
     }
 })
 
