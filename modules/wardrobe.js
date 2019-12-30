@@ -1,9 +1,17 @@
 const express = require('express')
 const router = express.Router()
 
+// SCHEMA
+const Item = require('../models/item')
+
 // GETTING ALL
-router.get('/', (req, res) => {
-    res.send('Getting All')
+router.get('/', async (req, res) => {
+    try {
+        const items = await Item.find()
+        res.json(items)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 })
 
 // CREATING ONE
