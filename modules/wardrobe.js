@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 // GETTING ONE
 router.get('/:id', getOneItem, (req, res) => {
-    res.send(res.item.name)
+    res.send(res.item)
 })
 
 // CREATING ONE
@@ -35,23 +35,25 @@ router.post('/', async (req, res) => {
 })
 
 // DELETING ONE
-router.delete('/:id', (req, res) => {
-    res.send(`Deleting item ${req.params.id}`)
+router.delete('/:id', getOneItem, async (req, res) => {
+    try {
+        await res.item.remove()
+        res.json({ message: `${res.item.name} DELETED`})
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
 })
 
 // MIDDLEWARES
 async function getOneItem(req, res, next) {
-    let item
+    // FIX THIS ERROR HANDLER
     try {
         item = await Item.findById(req.params.id)
-        if (item === null) {
-            return res.status(404).json({ message: 'Item NOT found'})
-        }
+        res.item = item
     } catch (err) {
-        res.status(500).json({ message: err.message })
+        return res.status(404).json({ message: 'Item NOT found' })
     }
 
-    res.item = item
     next()
 }
 
