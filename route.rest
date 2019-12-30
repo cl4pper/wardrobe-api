@@ -1,0 +1,16 @@
+GET http://localhost:3000/
+
+###
+GET http://localhost:3000/5e0969f9941e2d56a2120bed
+
+###
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "name": "Nike Air",
+    "type": "shoes"
+}
+
+###
+DELETE http://localhost:3000/5e0969f9941e2d56a2120bed
