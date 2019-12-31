@@ -47,15 +47,8 @@ router.delete('/:id', getOneItem, async (req, res) => {
 // UPDATING ONE
 router.patch('/:id', getOneItem, async (req, res) => {
     if (req.body) {
-        const item = new Item ({
-            ...res.item.toObject(),
-            ...req.body
-        })
-
-        await res.item.remove() // delete past item before send new item
-
         try {
-            await item.save()
+            await Item.updateOne( {_id: res.item }, { $set: { ...req.body } })
             res.status(201).json(item)
         } catch (err) {
             res.status(400).json({ message: err.message })

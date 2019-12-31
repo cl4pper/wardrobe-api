@@ -1,7 +1,7 @@
 GET http://localhost:3000/
 
 ###
-GET http://localhost:3000/5e0969f9941e2d56a2120bed
+GET http://localhost:3000/5e0a2a951af8a1e861e95131
 
 ###
 POST http://localhost:3000/
@@ -16,9 +16,10 @@ Content-Type: application/json
 DELETE http://localhost:3000/5e099108a87fd7c666a56ba4
 
 ###
-PATCH http://localhost:3000/5e0a444ff240783ea62c0273
+PATCH http://localhost:3000/5e0a2a951af8a1e861e95131
 Content-Type: application/json
 
 {
-    "name": "Adidas Stripes"
+    "name": "Nike Tennis",
+    "type": "shirt"
 }
