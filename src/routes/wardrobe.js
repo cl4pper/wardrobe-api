@@ -10,7 +10,7 @@ const mainRoute = require("@constants").routeWardrobe;
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
   try {
-    const items = await Item.find();
+    const items = await Item.find().select("-_id -__v");
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -18,16 +18,22 @@ router.get(mainRoute, async (req, res) => {
 });
 
 // GETTING ONE
-router.get(`${mainRoute}/:id`, getOneItem, (req, res) => {
-  res.send(res.item);
+router.get(`${mainRoute}/:id`, async (req, res) => {
+  // res.send(res.item);
+  try {
+    const item = await Item.findById(req.params.id)
+      .populate("type")
+      .select("-_id -__v");
+    res.send(item);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // CREATING ONE
 router.post(mainRoute, async (req, res) => {
   const item = new Item({
-    name: req.body.name,
-    type: req.body.type,
-    store: true
+    ...req.body
   });
   try {
     const newItem = await item.save();
