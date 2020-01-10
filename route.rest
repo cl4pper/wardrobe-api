@@ -4,6 +4,10 @@ GET http://localhost:3000/api/wardrobe
 ### GETS A SPECIFIC ITEM FROM THE WARDROBE
 GET http://localhost:3000/api/wardrobe/5e1891d3fb35363aa2d00b83
 
+### DELETES AN ITEM FROM THE WARDROBE
+DELETE http://localhost:3000/api/wardrobe/5e099108a87fd7c666a56ba4
+
+
 ### CREATES AN ITEM INTO THE WARDROBE
 POST http://localhost:3000/api/wardrobe
 Content-Type: application/json
@@ -14,28 +18,35 @@ Content-Type: application/json
     "size": "s"
 }
 
-### DELETES AN ITEM FROM THE WARDROBE
-DELETE http://localhost:3000/api/wardrobe/5e099108a87fd7c666a56ba4
-
 ### CHANGE VALUES FOR AN ITEM INTO THE WARDROBE
-PATCH http://localhost:3000/api/wardrobe/5e0a2a951af8a1e861e95131
+PATCH http://localhost:3000/api/wardrobe/5e1891d3fb35363aa2d00b83
 Content-Type: application/json
 
 {
-    "name": "Nike Tennis",
-    "type": "shirt"
+    "name": "Arsenal Away Kit",
+    "type": "5e18917afb35363aa2d00b82",
+    "size": "s"
 }
 
 ### GETS ALL WEARABLE TYPES
 GET http://localhost:3000/api/wearables
+
+
+### GETS A SPECIFIC WEARABLE TYPE
+GET http://localhost:3000/api/wearables/5e18af333275935a956f106e
 
 ### CREATES A WEARABLE TYPE
 POST http://localhost:3000/api/wearables
 Content-Type: application/json
 
 {
-    "name": "Jersey"
+    "name": "t-shirt"
 }
 
-### GETS A SPECIFIC WEARABLE TYPE
-GET http://localhost:3000/api/wearables/5e18917afb35363aa2d00b82
+### CHANGE VALUES FOR AN ITEM INTO THE WARDROBE
+PATCH http://localhost:3000/api/wearables/5e18af333275935a956f106e
+Content-Type: application/json
+
+{
+    "name": "T-shirt"
+}

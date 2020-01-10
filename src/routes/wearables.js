@@ -44,5 +44,14 @@ router.post(mainRoute, async (req, res) => {
 // DELETING ONE
 
 // UPDATING ONE
+router.patch(`${mainRoute}/:id`, async (req, res) => {
+  try {
+    const updateTarget = await Wearable.findById(req.params.id);
+    const query = { _id: req.params.id };
+    await Wearable.updateOne(query, { $set: { ...req.body } });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 module.exports = router;
