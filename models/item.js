@@ -3,19 +3,18 @@ const mongoose = require('mongoose')
 const itemSchema = new mongoose.Schema({
     name: {
         type: String,
+        minlength: 1,
         required: true
     },
     type: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Wearables',
+        required: true
+    },
+    size: {
         type: String,
-        required: true
-    },
-    lastUpdateAt: {
-        type: Date,
-        default: Date.now
-    },
-    store: {
-        type: Boolean,
-        required: true
+        enum: [ 's', 'm', 'l', 'xl', 'xxl' ],
+        require: false
     }
 })
 
