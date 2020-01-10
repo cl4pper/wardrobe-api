@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // SCHEMA
-const Item = require("@model/item");
+const Wearable = require("@model/wearable");
 
 // LOCAL VARIABLES
 const mainRoute = require("@constants").routeWearable;
@@ -10,66 +10,39 @@ const mainRoute = require("@constants").routeWearable;
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
   try {
-    const items = await Item.find();
-    res.json(items);
+    const wearableTypes = await Wearable.find();
+    res.json(wearableTypes);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
 // GETTING ONE
-router.get(`${mainRoute}/:id`, getOneItem, (req, res) => {
-  res.send(res.item);
+router.get(`${mainRoute}/:id`, async (req, res) => {
+  try {
+    const wearableType = await Wearable.findById(req.params.id);
+    res.json(wearableType);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 // CREATING ONE
 router.post(mainRoute, async (req, res) => {
-  const item = new Item({
-    name: req.body.name,
-    type: req.body.type,
-    store: true
+  const wearableType = new Wearable({
+    ...req.body
   });
+
   try {
-    const newItem = await item.save();
-    res.status(201).json(newItem);
+    const newWearableType = await wearableType.save();
+    res.status(201).json(newWearableType);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
 // DELETING ONE
-router.delete(`${mainRoute}/:id`, getOneItem, async (req, res) => {
-  try {
-    await res.item.remove();
-    res.json({ message: `${res.item.name} DELETED` });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
 
 // UPDATING ONE
-router.patch(`${mainRoute}/:id`, getOneItem, async (req, res) => {
-  if (req.body) {
-    try {
-      await Item.updateOne({ _id: res.item }, { $set: { ...req.body } });
-      res.status(201).json(item);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  }
-});
-
-// MIDDLEWARES
-async function getOneItem(req, res, next) {
-  // FIX THIS ERROR HANDLER
-  try {
-    item = await Item.findById(req.params.id);
-    res.item = item;
-  } catch (err) {
-    return res.status(404).json({ message: "Item NOT found" });
-  }
-
-  next();
-}
 
 module.exports = router;
