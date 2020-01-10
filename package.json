@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "link-module-alias",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "link-module-alias && nodemon app.js"
+    "server": "link-module-alias && nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
     "link-module-alias": "^1.2.0"
   },
   "_moduleAliases": {
-    "@routes": "./modules",
-    "@models": "./models"
+    "@route": "./src/routes",
+    "@model": "./src/models",
+    "@constants": "./src/utils/constants.js"
   }
 }
