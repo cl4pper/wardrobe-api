@@ -5,7 +5,8 @@ const app = express()
 const mongoose = require('mongoose')
 
 // MODULES
-const wardrobeRoute = require('./modules/wardrobe') // wardrobe store
+const ROUTE_WARDROBE = require('./modules/wardrobe')
+const ROUTE_WEARABLES = require('./modules/wearables')
 
 // LOCAL VARIABLES
 const PORT = 3000
@@ -18,6 +19,6 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTo
 
 app.use(express.json())
 
-app.use('/', wardrobeRoute)
+app.use('/api', [ROUTE_WARDROBE, ROUTE_WARDROBE])
 
 app.listen(PORT, () => { console.log('Server is running on PORT:', PORT) })
