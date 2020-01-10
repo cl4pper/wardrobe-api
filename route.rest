@@ -1,21 +1,23 @@
+### GETS ALL ITEMS IN THE WARDROBE
 GET http://localhost:3000/api/wardrobe
 
-###
-GET http://localhost:3000/api/wardrobe/5e0a2a951af8a1e861e95131
+### GETS A SPECIFIC ITEM FROM THE WARDROBE
+GET http://localhost:3000/api/wardrobe/5e1891d3fb35363aa2d00b83
 
-###
+### CREATES AN ITEM INTO THE WARDROBE
 POST http://localhost:3000/api/wardrobe
 Content-Type: application/json
 
 {
-    "name": "Nike Air",
-    "type": "shoes"
+    "name": "Arsenal Home Kit",
+    "type": "5e18917afb35363aa2d00b82",
+    "size": "s"
 }
 
-###
+### DELETES AN ITEM FROM THE WARDROBE
 DELETE http://localhost:3000/api/wardrobe/5e099108a87fd7c666a56ba4
 
-###
+### CHANGE VALUES FOR AN ITEM INTO THE WARDROBE
 PATCH http://localhost:3000/api/wardrobe/5e0a2a951af8a1e861e95131
 Content-Type: application/json
 
@@ -23,3 +25,17 @@ Content-Type: application/json
     "name": "Nike Tennis",
     "type": "shirt"
 }
+
+### GETS ALL WEARABLE TYPES
+GET http://localhost:3000/api/wearables
+
+### CREATES A WEARABLE TYPE
+POST http://localhost:3000/api/wearables
+Content-Type: application/json
+
+{
+    "name": "Jersey"
+}
+
+### GETS A SPECIFIC WEARABLE TYPE
+GET http://localhost:3000/api/wearables/5e18917afb35363aa2d00b82
