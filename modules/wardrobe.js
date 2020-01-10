@@ -4,8 +4,11 @@ const router = express.Router()
 // SCHEMA
 const Item = require('../models/item')
 
+// LOCAL VARIABLES
+const mainRoute = '/wardrobe'
+
 // GETTING ALL
-router.get('/', async (req, res) => {
+router.get(mainRoute, async (req, res) => {
     try {
         const items = await Item.find()
         res.json(items)
@@ -15,12 +18,12 @@ router.get('/', async (req, res) => {
 })
 
 // GETTING ONE
-router.get('/:id', getOneItem, (req, res) => {
+router.get(`${mainRoute}/:id`, getOneItem, (req, res) => {
     res.send(res.item)
 })
 
 // CREATING ONE
-router.post('/', async (req, res) => {
+router.post(mainRoute, async (req, res) => {
     const item = new Item ({
         name: req.body.name,
         type: req.body.type,
@@ -35,7 +38,7 @@ router.post('/', async (req, res) => {
 })
 
 // DELETING ONE
-router.delete('/:id', getOneItem, async (req, res) => {
+router.delete(`${mainRoute}/:id`, getOneItem, async (req, res) => {
     try {
         await res.item.remove()
         res.json({ message: `${res.item.name} DELETED`})
@@ -45,7 +48,7 @@ router.delete('/:id', getOneItem, async (req, res) => {
 })
 
 // UPDATING ONE
-router.patch('/:id', getOneItem, async (req, res) => {
+router.patch(`${mainRoute}/:id`, getOneItem, async (req, res) => {
     if (req.body) {
         try {
             await Item.updateOne( {_id: res.item }, { $set: { ...req.body } })

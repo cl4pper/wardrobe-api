@@ -1,10 +1,10 @@
-GET http://localhost:3000/
+GET http://localhost:3000/api/wardrobe
 
 ###
-GET http://localhost:3000/5e0a2a951af8a1e861e95131
+GET http://localhost:3000/api/wardrobe/5e0a2a951af8a1e861e95131
 
 ###
-POST http://localhost:3000/
+POST http://localhost:3000/api/wardrobe
 Content-Type: application/json
 
 {
@@ -13,10 +13,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/5e099108a87fd7c666a56ba4
+DELETE http://localhost:3000/api/wardrobe/5e099108a87fd7c666a56ba4
 
 ###
-PATCH http://localhost:3000/5e0a2a951af8a1e861e95131
+PATCH http://localhost:3000/api/wardrobe/5e0a2a951af8a1e861e95131
 Content-Type: application/json
 
 {
