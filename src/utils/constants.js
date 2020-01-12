@@ -1,5 +1,5 @@
 // ROUTES VARIABLES
 module.exports = {
-  routeWardrobe: "/wardrobe",
-  routeWearable: "/wearables"
+	routeWardrobe: '/wardrobe',
+	routeWearable: '/wearables'
 };

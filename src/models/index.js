@@ -1,7 +1,7 @@
-const itemModel = require('./item')
-const wearableModel = require('./wearable')
+const itemModel = require('./item');
+const wearableModel = require('./wearable');
 
 module.exports = {
-    itemModel,
-    wearableModel
-}
+	itemModel,
+	wearableModel
+};
