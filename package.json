@@ -29,8 +29,8 @@
     "link-module-alias": "^1.2.0"
   },
   "_moduleAliases": {
-    "@route": "./src/routes",
-    "@model": "./src/models",
-    "@constants": "./src/utils/constants.js"
+    "~route": "./src/routes",
+    "~model": "./src/models",
+    "~constants": "./src/utils/constants.js"
   }
 }

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // SCHEMA
-const Item = require('@model').itemModel;
+const Item = require('~model').itemModel;
 
 // LOCAL VARIABLES
-const mainRoute = require('@constants').routeWardrobe;
+const mainRoute = require('~constants').routeWardrobe;
 
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
