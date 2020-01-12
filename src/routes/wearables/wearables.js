@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // SCHEMA
-const Wearable = require("@model/wearable");
+const Wearable = require("@model").wearableModel;
 
 // LOCAL VARIABLES
 const mainRoute = require("@constants").routeWearable;

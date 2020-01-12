@@ -5,8 +5,8 @@ const app = express();
 const mongoose = require("mongoose");
 
 // MODULES
-const ROUTE_WARDROBE = require("@route/wardrobe");
-const ROUTE_WEARABLES = require("@route/wearables");
+const ROUTE_WARDROBE = require("@route").wardrobe;
+const ROUTE_WEARABLES = require("@route").wearables;
 
 // LOCAL VARIABLES
 const PORT = 3000;

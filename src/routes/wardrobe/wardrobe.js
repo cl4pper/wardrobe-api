@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // SCHEMA
-const Item = require("@model/item");
+const Item = require("@model").itemModel;
 
 // LOCAL VARIABLES
 const mainRoute = require("@constants").routeWardrobe;
