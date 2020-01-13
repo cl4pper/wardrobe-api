@@ -1,39 +1,39 @@
 {
-  "name": "wardrobe-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "link-module-alias",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon ./src/server.js",
-    "alias": "link-module-alias",
-    "lint:fix": "eslint --fix ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cl4pper/wardrobe-api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cl4pper/wardrobe-api/issues"
-  },
-  "homepage": "https://github.com/cl4pper/wardrobe-api#readme",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.8.3"
-  },
-  "devDependencies": {
-    "concurrently": "^5.0.2",
-    "eslint": "^6.8.0",
-    "link-module-alias": "^1.2.0"
-  },
-  "_moduleAliases": {
-    "Aroutes": "./src/routes",
-    "Amodels": "./src/models",
-    "Aconstants": "./src/utils/constants.js"
-  }
+	"name": "wardrobe-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"postinstall": "link-module-alias",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"server": "nodemon ./src/server.js",
+		"alias": "link-module-alias",
+		"lint:fix": "eslint --fix ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cl4pper/wardrobe-api.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cl4pper/wardrobe-api/issues"
+	},
+	"homepage": "https://github.com/cl4pper/wardrobe-api#readme",
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"mongoose": "^5.8.3"
+	},
+	"devDependencies": {
+		"concurrently": "^5.0.2",
+		"eslint": "^6.8.0",
+		"link-module-alias": "^1.2.0"
+	},
+	"_moduleAliases": {
+		"Aroutes": "./src/routes",
+		"Amodels": "./src/models",
+		"Aconstants": "./src/utils/constants.js"
+	}
 }
