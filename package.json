@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"preinstall": "command -v link-module-alias && link-module-alias clean || true",
 		"postinstall": "link-module-alias",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"server": "nodemon ./src/server.js",
