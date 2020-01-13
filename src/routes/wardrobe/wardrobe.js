@@ -24,7 +24,10 @@ router.get(`${mainRoute}/:id`, async (req, res) => {
 	// res.send(res.item);
 	try {
 		const item = await Item.findById(req.params.id)
-			.populate('type')
+			.populate({
+				path: 'type',
+				select: 'name'
+			})
 			.select('-_id -__v');
 		res.send(item);
 	} catch (err) {

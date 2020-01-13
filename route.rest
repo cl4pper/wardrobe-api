@@ -5,7 +5,7 @@ GET http://localhost:3000/api/wardrobe
 GET http://localhost:3000/api/wardrobe/5e1891d3fb35363aa2d00b83
 
 ### DELETES AN ITEM FROM THE WARDROBE
-DELETE http://localhost:3000/api/wardrobe/5e099108a87fd7c666a56ba4
+DELETE http://localhost:3000/api/wardrobe/5e133271f95bdb49f1e138b7
 
 
 ### CREATES AN ITEM INTO THE WARDROBE
