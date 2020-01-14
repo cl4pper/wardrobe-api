@@ -1,11 +1,14 @@
+require('module-alias/register');
+
 const express = require('express');
 const router = express.Router();
 
 // SCHEMA
-const Item = require('Amodels').itemModel;
+const Item = require('@models').itemModel;
+// const Item = require('@models').itemModel;
 
 // LOCAL VARIABLES
-const mainRoute = require('Aconstants').routeWardrobe;
+const mainRoute = require('@constants').routeWardrobe;
 
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
