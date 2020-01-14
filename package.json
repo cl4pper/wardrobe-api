@@ -4,11 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"preinstall": "command -v link-module-alias && link-module-alias clean || true",
-		"postinstall": "link-module-alias",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "jest",
+		"test:watch": "jest --watch",
 		"server": "nodemon ./src/server.js",
-		"alias": "link-module-alias",
 		"lint:fix": "eslint --fix ."
 	},
 	"repository": {
@@ -25,16 +23,16 @@
 	"dependencies": {
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
+		"module-alias": "^2.2.2",
 		"mongoose": "^5.8.3"
 	},
 	"devDependencies": {
 		"concurrently": "^5.0.2",
-		"eslint": "^6.8.0",
-		"link-module-alias": "^1.2.0"
+		"eslint": "^6.8.0"
 	},
 	"_moduleAliases": {
-		"Aroutes": "./src/routes",
-		"Amodels": "./src/models",
-		"Aconstants": "./src/utils/constants.js"
+		"@routes": "src/routes",
+		"@models": "src/models",
+		"@constants": "src/utils/constants.js"
 	}
 }
