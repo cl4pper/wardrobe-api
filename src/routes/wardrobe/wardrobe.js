@@ -1,20 +1,23 @@
+require('module-alias/register');
+
 const express = require('express');
 const router = express.Router();
 
 // SCHEMA
-const Item = require('Amodels').itemModel;
+const Item = require('@models').itemModel;
+// const Item = require('@models').itemModel;
 
 // LOCAL VARIABLES
-const mainRoute = require('Aconstants').routeWardrobe;
+const mainRoute = require('@constants').routeWardrobe;
 
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
 	try {
-		const items = await Item.find().select('-_id -__v');
+		const items = await Item.find().select('-__v');
 		res.json(items);
 	} catch (err) {
 		res.status(500).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -24,12 +27,15 @@ router.get(`${mainRoute}/:id`, async (req, res) => {
 	// res.send(res.item);
 	try {
 		const item = await Item.findById(req.params.id)
-			.populate('type')
+			.populate({
+				path: 'type',
+				select: 'name'
+			})
 			.select('-_id -__v');
 		res.send(item);
 	} catch (err) {
 		res.status(500).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -44,7 +50,7 @@ router.post(mainRoute, async (req, res) => {
 		res.status(201).json(newItem);
 	} catch (err) {
 		res.status(400).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -54,11 +60,11 @@ router.delete(`${mainRoute}/:id`, getOneItem, async (req, res) => {
 	try {
 		await res.item.remove();
 		res.json({
-			message: `${res.item.name} DELETED` 
+			message: `${res.item.name} DELETED`
 		});
 	} catch (err) {
 		res.status(500).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -67,19 +73,22 @@ router.delete(`${mainRoute}/:id`, getOneItem, async (req, res) => {
 router.patch(`${mainRoute}/:id`, getOneItem, async (req, res) => {
 	if (req.body) {
 		try {
-			await Item.updateOne({
-				_id: res.item 
-			}, {
-				$set: {
-					...req.body 
-				} 
-			});
+			await Item.updateOne(
+				{
+					_id: res.item
+				},
+				{
+					$set: {
+						...req.body
+					}
+				}
+			);
 			res.status(201).json({
-				message: 'Update done.' 
+				message: 'Update done.'
 			});
 		} catch (err) {
 			res.status(400).json({
-				message: err.message 
+				message: err.message
 			});
 		}
 	}
@@ -93,7 +102,7 @@ async function getOneItem(req, res, next) {
 		res.item = item;
 	} catch (err) {
 		return res.status(404).json({
-			message: 'Item NOT found' 
+			message: 'Item NOT found'
 		});
 	}
 

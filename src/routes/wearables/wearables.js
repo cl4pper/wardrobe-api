@@ -14,7 +14,7 @@ router.get(mainRoute, async (req, res) => {
 		res.json(wearableTypes);
 	} catch (err) {
 		res.status(500).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -26,7 +26,7 @@ router.get(`${mainRoute}/:id`, async (req, res) => {
 		res.json(wearableType);
 	} catch (err) {
 		res.status(500).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -42,7 +42,7 @@ router.post(mainRoute, async (req, res) => {
 		res.status(201).json(newWearableType);
 	} catch (err) {
 		res.status(400).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });
@@ -54,17 +54,17 @@ router.patch(`${mainRoute}/:id`, async (req, res) => {
 	try {
 		const updateTarget = await Wearable.findById(req.params.id);
 		const query = {
-			_id: req.params.id 
+			_id: req.params.id
 		};
 		await Wearable.updateOne(query, {
 			$set: {
-				...req.body 
-			} 
+				...req.body
+			}
 		});
 		res.json(updateTarget);
 	} catch (err) {
 		res.status(400).json({
-			message: err.message 
+			message: err.message
 		});
 	}
 });

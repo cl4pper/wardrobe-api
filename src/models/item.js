@@ -13,7 +13,7 @@ const itemSchema = new mongoose.Schema({
 	},
 	size: {
 		type: String,
-		enum: [ 's', 'm', 'l', 'xl', 'xxl' ],
+		enum: ['s', 'm', 'l', 'xl', 'xxl'],
 		require: false
 	}
 });

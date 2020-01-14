@@ -1,0 +1,9 @@
+{
+	"testRegex": "((\\.|/*.)(test))\\.js?$",
+	"testEnvironment": "node",
+	"moduleNameMapper": {
+		"^@routes(.*)$": "<rootDir>/src/routes",
+		"^@models(.*)$": "<rootDir>/src/models",
+		"^@constants(.*)$": "<rootDir>/src/utils/constants.js"
+	}
+}
