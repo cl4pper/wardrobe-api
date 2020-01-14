@@ -1,3 +1,4 @@
+require('module-alias/register');
 require('dotenv').config();
 
 const express = require('express');
@@ -5,8 +6,8 @@ const app = express();
 const mongoose = require('mongoose');
 
 // MODULES
-const ROUTE_WARDROBE = require('Aroutes').wardrobe;
-const ROUTE_WEARABLES = require('Aroutes').wearables;
+const ROUTE_WARDROBE = require('@routes').wardrobe;
+const ROUTE_WEARABLES = require('@routes').wearables;
 
 // LOCAL VARIABLES
 const PORT = 3000;
@@ -23,8 +24,12 @@ mongoose
 
 app.use(express.json());
 
+// hsdjkfgsdkfgsdfgdshfgsdfsdjhfgdshjfgdsjhfgsdhdsjfhgsdhgfsdfgjhsfgsjhfgsdjfgdsfgsdkgsdkfgdsfdgsfsdgsdgfjksdgfksdgfhksdgfsdjk
+
 app.use('/api', [ROUTE_WARDROBE, ROUTE_WEARABLES]);
 
 app.listen(PORT, () => {
 	console.log('Server is running on PORT:', PORT);
 });
+
+module.exports = app;
