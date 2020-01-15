@@ -27,6 +27,6 @@
 		"indent": ["error", "tab"],
 		"semi": [2, "always"],
 		"quotes": ["error", "single"],
-		"max-len": ["error", { "code": 100, "tabWidth": 4 }]
+		"max-len": ["error", { "code": 100, "tabWidth": 2 }]
 	}
 }
