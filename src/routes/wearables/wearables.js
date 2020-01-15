@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // SCHEMA
-const Wearable = require('Amodels').wearableModel;
+const Wearable = require('@models').wearableModel;
 
 // LOCAL VARIABLES
-const mainRoute = require('Aconstants').routeWearable;
+const mainRoute = require('@constants').routeWearable;
 
 // GETTING ALL
 router.get(mainRoute, async (req, res) => {
