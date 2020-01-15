@@ -1,5 +1,7 @@
 require('module-alias/register');
-require('dotenv').config();
+require('dotenv').config({
+	path: process.env.NODE_ENV === 'dev' ? '.env.dev' : '.env'
+});
 
 const express = require('express');
 const app = express();
@@ -23,8 +25,6 @@ mongoose
 // MONGODB CONFIG. ---------------------------- END
 
 app.use(express.json());
-
-// hsdjkfgsdkfgsdfgdshfgsdfsdjhfgdshjfgdsjhfgsdhdsjfhgsdhgfsdfgjhsfgsjhfgsdjfgdsfgsdkgsdkfgdsfdgsfsdgsdgfjksdgfksdgfhksdgfsdjk
 
 app.use('/api', [ROUTE_WARDROBE, ROUTE_WEARABLES]);
 

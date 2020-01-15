@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest",
+		"start": "node ./src/server.js",
+		"dev": "NODE_ENV=dev nodemon ./src/server.js",
+		"test": "NODE_ENV=dev jest",
 		"test:watch": "jest --watch",
-		"server": "nodemon ./src/server.js",
 		"lint:fix": "eslint --fix ."
 	},
 	"repository": {
