@@ -36,8 +36,17 @@
 		"supertest": "^4.0.2"
 	},
 	"_moduleAliases": {
+		"@server": "src/server.js",
 		"@routes": "src/routes",
 		"@models": "src/models",
 		"@constants": "src/utils/constants.js"
+	},
+	"jest": {
+		"moduleNameMapper": {
+			"ˆ@server": "<rootDir>/src/server.js",
+			"^@routes(.*)$": "<rootDir>/src/routes",
+			"^@models(.*)$": "<rootDir>/src/models",
+			"^@constants": "<rootDir>/src/utils/constants.js"
+		}
 	}
 }
