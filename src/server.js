@@ -16,12 +16,16 @@ const PORT = 3000;
 
 // MONGODB CONFIG. ---------------------------- START
 mongoose
-	.connect(process.env.DATABASE_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	})
-	.then(() => console.log('Connected to mongodb...'))
-	.catch(err => console.error('NOT connect to mongobd!', err));
+	.connect(
+		process.env.DATABASE_URL,
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true
+		},
+		() => console.log('Connecting to the server...')
+	)
+	.then(() => console.log('Connected'))
+	.catch(err => err);
 // MONGODB CONFIG. ---------------------------- END
 
 app.use(express.json());
