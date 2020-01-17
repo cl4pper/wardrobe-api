@@ -5,7 +5,6 @@ const router = express.Router();
 
 // SCHEMA
 const Item = require('@models').itemModel;
-// const Item = require('@models').itemModel;
 
 // LOCAL VARIABLES
 const mainRoute = require('@constants').routeWardrobe;
@@ -14,9 +13,9 @@ const mainRoute = require('@constants').routeWardrobe;
 router.get(mainRoute, async (req, res) => {
 	try {
 		const items = await Item.find().select('-__v');
-		res.json(items);
+		res.status(200).json(items);
 	} catch (err) {
-		res.status(500).json({
+		res.status(204).json({
 			message: err.message
 		});
 	}
@@ -24,7 +23,6 @@ router.get(mainRoute, async (req, res) => {
 
 // GETTING ONE
 router.get(`${mainRoute}/:id`, async (req, res) => {
-	// res.send(res.item);
 	try {
 		const item = await Item.findById(req.params.id)
 			.populate({
@@ -32,9 +30,9 @@ router.get(`${mainRoute}/:id`, async (req, res) => {
 				select: 'name'
 			})
 			.select('-_id -__v');
-		res.send(item);
+		res.status(200).json(item);
 	} catch (err) {
-		res.status(500).json({
+		res.status(204).json({
 			message: err.message
 		});
 	}
@@ -83,7 +81,7 @@ router.patch(`${mainRoute}/:id`, getOneItem, async (req, res) => {
 					}
 				}
 			);
-			res.status(201).json({
+			res.status(200).json({
 				message: 'Update done.'
 			});
 		} catch (err) {

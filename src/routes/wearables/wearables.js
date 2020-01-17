@@ -11,9 +11,9 @@ const mainRoute = require('@constants').routeWearable;
 router.get(mainRoute, async (req, res) => {
 	try {
 		const wearableTypes = await Wearable.find();
-		res.json(wearableTypes);
+		res.status(200).json(wearableTypes);
 	} catch (err) {
-		res.status(500).json({
+		res.status(204).json({
 			message: err.message
 		});
 	}
@@ -23,9 +23,9 @@ router.get(mainRoute, async (req, res) => {
 router.get(`${mainRoute}/:id`, async (req, res) => {
 	try {
 		const wearableType = await Wearable.findById(req.params.id);
-		res.json(wearableType);
+		res.status(200).json(wearableType);
 	} catch (err) {
-		res.status(500).json({
+		res.status(204).json({
 			message: err.message
 		});
 	}
@@ -61,7 +61,7 @@ router.patch(`${mainRoute}/:id`, async (req, res) => {
 				...req.body
 			}
 		});
-		res.json(updateTarget);
+		res.status(200).json(updateTarget);
 	} catch (err) {
 		res.status(400).json({
 			message: err.message
